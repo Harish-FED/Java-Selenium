@@ -10,6 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 
 public class Baseclass {
 
@@ -59,5 +60,28 @@ public class Baseclass {
 		Set<String> windowHandles = driver.getWindowHandles();
 		List<String> list = new ArrayList<String>(windowHandles);
 		driver.switchTo().window(list.get(num));
+	}
+	
+	public static void selectbyIndex(WebElement element, int value) {
+		Select s = new Select(element);
+		s.selectByIndex(value);
+	}
+	
+	public static void selectbyValue(WebElement element, String value) {
+		Select s = new Select(element);
+		s.selectByValue(value);
+	}
+	
+	public static void selectbyVisibletext(WebElement element, String value ) {
+		Select s = new Select(element);
+		s.selectByVisibleText(value);
+	}
+	
+	public static void frameByWebElement(WebElement element) {
+		driver.switchTo().frame(element);
+	}
+	
+	public static void parentFrame() {
+		driver.switchTo().parentFrame();
 	}
 }
